@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Torneo Pádel Torremolinos</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="#reglas">Reglas del Torneo</a></li>
+      <li><a href="#partidos">Partidos</a></li>
+      <li><a href="#clasificacion">Tabla de Clasificación</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Barra de acceso capitanes -->
+<div id="admin-bar" style="margin-top:80px; text-align:center;">
+  <button id="btn-capitan">Acceso capitanes</button>
+</div>
+
+<section id="reglas">
+  <h1>🏆 Reglas del Torneo</h1>
+  <div id="reglas-content">
+
+    <h2>🏆 REGLAMENTO OFICIAL DEL TORNEO DE PÁDEL</h2>
+
+    <p><strong>Organiza:</strong> Club Pádel Torremolinos<br>
+    <strong>Sede:</strong> Patronato de Deportes de Torremolinos<br>
+    <strong>Fechas:</strong> 20 y 21 de febrero</p>
+
+    <h3>👥 FORMATO DE EQUIPOS</h3>
+    <p>
+      Cada equipo contará con un capitán responsable de realizar las alineaciones en cada enfrentamiento.<br>
+      Cada equipo estará formado por <strong>5 parejas</strong>.
+    </p>
+
+    <h3>🏟️ SISTEMA DE LIGAS (POR NIVELES)</h3>
+    <p>El torneo se divide en dos ligas por nivel:</p>
+    <ul>
+      <li><strong>Liga A:</strong> nivel alto</li>
+      <li><strong>Liga B:</strong> nivel medio</li>
+    </ul>
+    <p>Cada liga estará compuesta por 5 equipos. Cada equipo disputará <strong>4 enfrentamientos</strong> durante el torneo.</p>
+
+    <h3>📋 EQUIPOS PARTICIPANTES</h3>
+
+    <p>🔝 <strong>Liga A:</strong></p>
+    <ul>
+      <li>C.P. Torremolinos - A</li>
+      <li>Sitges / Cierzo Zaragoza</li>
+      <li>Dracs Valencia - A</li>
+      <li>GMadrid - A</li>
+      <li>Chicota Sevilla - A</li>
+    </ul>
+
+    <p>🔰 <strong>Liga B:</strong></p>
+    <ul>
+      <li>C.P. Torremolinos - B</li>
+      <li>Diversport Torremolinos</li>
+      <li>Dracs Valencia - B</li>
+      <li>GMadrid - B</li>
+      <li>Chicota Sevilla - B</li>
+    </ul>
+
+    <h3>🗓️ HORARIOS DE JUEGO</h3>
+    <p><strong>Viernes:</strong> 17:00 - 21:00 → 4 enfrentamientos, 5 pistas.</p>
+    <p><strong>Sábado:</strong></p>
+    <ul>
+      <li>10:00 - 12:00 → 3 enfrentamientos (5 pistas)</li>
+      <li>13:00 - 21:00 → resto de enfrentamientos (10 pistas)</li>
+    </ul>
+
+    <h3>🔢 ALINEACIONES Y ENFRENTAMIENTOS</h3>
+    <p>
+      Cada enfrentamiento se compone de <strong>5 partidos</strong> (Pareja 1 a Pareja 5).<br>
+      La Pareja 1 será la de mayor nivel y se enfrentará a la Pareja 1 rival, y así sucesivamente.
+    </p>
+
+    <h3>⏱️ FORMATO DE LOS PARTIDOS</h3>
+    <p>
+      Duración máxima: <strong>1 hora</strong>.<br>
+      Partidos al mejor de <strong>3 sets</strong>, con <strong>punto de oro</strong>.
+    </p>
+
+    <h3>⚖️ DESEMPATE EN PARTIDOS</h3>
+    <ul>
+      <li>Si al finalizar la hora no hay ganador: gana el equipo con más juegos ganados.</li>
+      <li>Si persiste el empate: gana el equipo que vaya por delante en ese momento, o se jugará un <strong>punto de oro</strong>.</li>
+    </ul>
+
+    <h3>📊 SISTEMA DE PUNTUACIÓN DE LOS ENFRENTAMIENTOS</h3>
+    <p>Cada partido ganado (de pareja) suma <strong>1 punto interno</strong>.</p>
+    <p>El resultado global del enfrentamiento determina los puntos de liga:</p>
+
+    <ul>
+      <li><strong>1–0</strong> → 1 punto para el ganador, 0 para el perdedor</li>
+      <li><strong>2–0</strong> → 2 puntos para el ganador, 0 para el perdedor</li>
+      <li><strong>3–2</strong> → 3 puntos para el ganador, 2 para el perdedor</li>
+      <li><strong>4–1</strong> → 4 puntos para el ganador, 1 para el perdedor</li>
+      <li><strong>5–0</strong> → 5 puntos para el ganador, 0 para el perdedor</li>
+    </ul>
+
+    <h3>🧮 CONTEO DE SETS</h3>
+    <p>
+      Se registrarán <strong>sets ganados</strong> y <strong>sets perdidos</strong> de todos los partidos del enfrentamiento.<br>
+      Se utilizará la diferencia de sets (<strong>SG − SP</strong>).
+    </p>
+
+    <h3>📈 CLASIFICACIÓN DE LA LIGA</h3>
+    <p><strong>Criterios de desempate:</strong></p>
+    <ol>
+      <li>Mayor número de puntos (PTS)</li>
+      <li>Mejor diferencia de sets (SG − SP)</li>
+      <li>Mejor diferencia de juegos (JG − JP)</li>
+    </ol>
+
+  </div>
+  <button id="toggle-reglas" class="toggle-btn">Ver más</button>
+</section>
+
+<section id="partidos">
+  <h1>📅 Partidos</h1>
+  <div id="partidos-list"></div>
+</section>
+
+<section id="clasificacion">
+  <h1>📊 Tabla de Clasificación</h1>
+  <div id="tabla-ligaA"><h2>Liga A</h2></div>
+  <div id="tabla-ligaB"><h2>Liga B</h2></div>
+</section>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal()">&times;</span>
+
+    <div id="form-equipos"></div>
+
+    <form id="form-resultados">
+      <div id="sets"></div>
+      <button type="submit">Guardar resultado</button>
+    </form>
+  </div>
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBscTiDUdMSj59vNOz-lWJQLtiNt66wDoE",
+  authDomain: "torneo-padel-torremolinos.firebaseapp.com",
+  projectId: "torneo-padel-torremolinos",
+  storageBucket: "torneo-padel-torremolinos.firebasestorage.app",
+  messagingSenderId: "1026936066366",
+  appId: "1:1026936066366:web:0155cdd880890260b8dc6f",
+  measurementId: "G-3SGRD960R9"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+</script>
+
+<!-- Acceso seguro capitanes -->
+<script>
+let modoCapitan = false;
+
+// Función para generar SHA-256
+async function sha256(text) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(text);
+  const hash = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(hash))
+    .map(b => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* --- ACCESO CAPITANES --- */
+  document.getElementById("btn-capitan").onclick = async () => {
+    const entrada = prompt("Introduce el PIN de capitán:");
+    if (!entrada) return;
+
+    const hashEntrada = await sha256(entrada);
+    const doc = await db.collection("config").doc("capitan").get();
+    const hashReal = doc.data().pinHash;
+
+    if (hashEntrada === hashReal) {
+      firebase.auth().signInAnonymously().then(() => {
+        modoCapitan = true;
+        alert("Modo capitán activado");
+        renderEnfrentamientos();
+      });
+    } else {
+      alert("PIN incorrecto");
+    }
+  };
+
+  /* --- VER MÁS / VER MENOS --- */
+  const reglas = document.getElementById("reglas-content");
+  const btn = document.getElementById("toggle-reglas");
+
+  btn.addEventListener("click", () => {
+    reglas.classList.toggle("expandido");
+
+    if (reglas.classList.contains("expandido")) {
+      btn.textContent = "Ver menos";
+    } else {
+      btn.textContent = "Ver más";
+      reglas.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+});
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
