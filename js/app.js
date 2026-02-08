@@ -225,6 +225,19 @@ function abrirFormulario(id) {
       const inputJ1 = row.querySelector(".j1");
       const inputJ2 = row.querySelector(".j2");
       const chkNJ = row.querySelector(".no-jugado");
+      chkNJ.addEventListener("change", () => {
+      if (chkNJ.checked) {
+        inputJ1.disabled = true;
+        inputJ2.disabled = true;
+        inputJ1.value = "";
+        inputJ2.value = "";
+        inputJ1.classList.remove("set-win", "set-lose");
+        inputJ2.classList.remove("set-win", "set-lose");
+      } else {
+        inputJ1.disabled = false;
+        inputJ2.disabled = false;
+      }
+      });
 
       inputJ1.classList.remove("set-win", "set-lose");
       inputJ2.classList.remove("set-win", "set-lose");
