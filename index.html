@@ -211,44 +211,52 @@ document.addEventListener("DOMContentLoaded", () => {
   const seguro = confirm("⚠️ ¿Seguro que quieres BORRAR TODOS los resultados?\nEsta acción no se puede deshacer.");
   if (!seguro) return;
 
-    try {
-      const snap = await db.collection("resultados").get();
-      const batch = db.batch();
-  
-      snap.forEach(doc => batch.delete(doc.ref));
-  
-      await batch.commit();
-  
-      alert("Todos los resultados han sido borrados.");
-  
-      // Resetear estado local
-      resultados = {};
-      recalcularTablas();
-      renderEnfrentamientos();
-  
-    } catch (err) {
-      console.error("Error borrando resultados:", err);
-      alert("Error borrando los resultados.");
-    }
-  };
-  
-  /* --- VER MÁS / VER MENOS --- */
+  try {
+    const snap = await db.collection("resultados").get();
+    const batch = db.batch();
+
+    snap.forEach(doc => batch.delete(doc.ref));
+
+    await batch.commit();
+
+    alert("Todos los resultados han sido borrados.");
+
+    // Resetear estado local
+    resultados = {};
+    recalcularTablas();
+    renderEnfrentamientos();
+
+  } catch (err) {
+    console.error("Error borrando resultados:", err);
+    alert("Error borrando los resultados.");
+  }
+};
+
+    /* --- VER MÁS / VER MENOS --- */
   const reglas = document.getElementById("reglas-content");
   const btn = document.getElementById("toggle-reglas");
 
-  btn.addEventListener("click", () => {
-    reglas.classList.toggle("expandido");
+  // altura inicial recortada
+  const ALTURA_INICIAL = 260; // ajusta si quieres más/menos texto visible
+  reglas.style.maxHeight = ALTURA_INICIAL + "px";
+  reglas.style.overflow = "hidden";
 
-    if (reglas.classList.contains("expandido")) {
+  btn.addEventListener("click", () => {
+    const expandido = reglas.classList.toggle("expandido");
+
+    if (expandido) {
+      // expandimos
+      reglas.style.maxHeight = "5000px";
       btn.textContent = "Ver menos";
     } else {
+      // volvemos a recortar
+      reglas.style.maxHeight = ALTURA_INICIAL + "px";
       btn.textContent = "Ver más";
       reglas.scrollIntoView({ behavior: "smooth" });
     }
   });
-
 });
 </script>
-<script src="js/app.js?v=4"></script>
+<script src="js/app.js?v=5"></script>
 </body>
 </html>
