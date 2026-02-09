@@ -345,3 +345,31 @@ tr:last-child td {
   .card { font-size: 0.9em; }
   #sponsors-bar img { height: 35px; }
 }
+/****************************************
+ * REGLAS – VER MÁS / VER MENOS
+ ****************************************/
+#reglas-content {
+  transition: max-height 0.4s ease;
+  overflow: hidden;
+}
+
+#reglas-content.expandido {
+  /* cuando está expandido, dejamos que crezca */
+  max-height: 5000px;
+}
+
+.toggle-btn {
+  margin-top: 15px;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.toggle-btn:hover {
+  background: var(--color-primary-dark);
+}
