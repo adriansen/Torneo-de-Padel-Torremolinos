@@ -21,6 +21,7 @@
 <!-- Barra de acceso capitanes -->
 <div id="admin-bar" style="margin-top:80px; text-align:center;">
   <button id="btn-capitan">Acceso capitanes</button>
+  <button id="btn-borrar-todo" style="display:none; background:#d9534f;">Borrar TODOS los resultados</button>
 </div>
 
 <section id="reglas">
@@ -196,6 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
       firebase.auth().signInAnonymously().then(() => {
         modoCapitan = true;
         alert("Modo capitán activado");
+        document.getElementById("btn-borrar-todo").style.display = "inline-block";
         renderEnfrentamientos();
       });
     } else {
@@ -203,6 +205,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  document.getElementById("btn-borrar-todo").onclick = async () => {
+  if (!modoCapitan) return;
+
+  const seguro = confirm("⚠️ ¿Seguro que quieres BORRAR TODOS los resultados?\nEsta acción no se puede deshacer.");
+  if (!seguro) return;
+
+    try {
+      const snap = await db.collection("resultados").get();
+      const batch = db.batch();
+  
+      snap.forEach(doc => batch.delete(doc.ref));
+  
+      await batch.commit();
+  
+      alert("Todos los resultados han sido borrados.");
+  
+      // Resetear estado local
+      resultados = {};
+      recalcularTablas();
+      renderEnfrentamientos();
+  
+    } catch (err) {
+      console.error("Error borrando resultados:", err);
+      alert("Error borrando los resultados.");
+    }
+  };
+  
   /* --- VER MÁS / VER MENOS --- */
   const reglas = document.getElementById("reglas-content");
   const btn = document.getElementById("toggle-reglas");
