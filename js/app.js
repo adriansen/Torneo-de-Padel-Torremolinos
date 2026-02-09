@@ -156,7 +156,7 @@ function renderEnfrentamientos() {
     }
 
     cont.innerHTML += `
-      <div class="partido card">
+      <div class="partido card liga${e.liga}">
         <strong>${e.hora}</strong><br>
         ${e.e1} vs ${e.e2}
         ${resumen}
