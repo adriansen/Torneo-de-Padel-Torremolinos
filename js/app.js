@@ -83,16 +83,30 @@ function renderEnfrentamientos() {
         if (!p || !p.sets) return;
 
         let s1 = 0, s2 = 0;
+        let juegos1 = 0, juegos2 = 0;
 
         p.sets.forEach(s => {
           if (!s) return;
+
+          juegos1 += s.j1;
+          juegos2 += s.j2;
+
           if (s.j1 > s.j2) s1++;
           else if (s.j2 > s.j1) s2++;
-        });
+            });
 
-        if (s1 > s2) ganadosE1++;
-        else if (s2 > s1) ganadosE2++;
+            // Decidir ganador del partido
+            if (s1 > s2) {
+              ganadosE1++;
+            } else if (s2 > s1) {
+              ganadosE2++;
+            } else {
+              // Empate a sets → decidir por juegos
+              if (juegos1 > juegos2) ganadosE1++;
+              else if (juegos2 > juegos1) ganadosE2++;
+            }
       });
+
 
       resumen = `
         <div class="resumen-enfrentamiento">
@@ -225,6 +239,7 @@ function abrirFormulario(id) {
       const inputJ1 = row.querySelector(".j1");
       const inputJ2 = row.querySelector(".j2");
       const chkNJ = row.querySelector(".no-jugado");
+
       chkNJ.addEventListener("change", () => {
       if (chkNJ.checked) {
         inputJ1.disabled = true;
@@ -238,6 +253,7 @@ function abrirFormulario(id) {
         inputJ2.disabled = false;
       }
       });
+
 
       inputJ1.classList.remove("set-win", "set-lose");
       inputJ2.classList.remove("set-win", "set-lose");
@@ -445,8 +461,16 @@ function recalcularTablas() {
       setsE1 += s1;
       setsE2 += s2;
 
-      if (s1 > s2) partidosE1++;
-      else if (s2 > s1) partidosE2++;
+      if (s1 > s2) {
+        partidosE1++;
+      } else if (s2 > s1) {
+        partidosE2++;
+      } else {
+        // Empate a sets → decidir por juegos
+        if (juegosE1 > juegosE2) partidosE1++;
+        else if (juegosE2 > juegosE1) partidosE2++;
+      }
+
     });
 
     e1.SG += setsE1;
