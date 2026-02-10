@@ -558,8 +558,33 @@ function suscribirResultados() {
 }
 
 /*********************************
+ * BOTÓN INSTRUCCIONES CAPITÁN
+ *********************************/
+function renderBotonInstrucciones() {
+  const cont = document.getElementById("btn-instrucciones-container");
+
+  if (modoCapitan) {
+    cont.innerHTML = `<button id="btn-instrucciones">Cómo rellenar resultados</button>`;
+    document.getElementById("btn-instrucciones").onclick = abrirModalInstrucciones;
+  } else {
+    cont.innerHTML = "";
+  }
+}
+
+function abrirModalInstrucciones() {
+  document.getElementById("modal-instrucciones").style.display = "block";
+  document.body.classList.add("modal-open");
+}
+
+function cerrarModalInstrucciones() {
+  document.getElementById("modal-instrucciones").style.display = "none";
+  document.body.classList.remove("modal-open");
+}
+
+/*********************************
  * INICIO
  *********************************/
 document.addEventListener("DOMContentLoaded", () => {
   suscribirResultados();
+  renderBotonInstrucciones();
 });
