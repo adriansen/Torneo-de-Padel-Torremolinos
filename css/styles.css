@@ -421,3 +421,123 @@ table.tabla-ligaB tr:hover td {
   border-left: 6px solid var(--ligaB);
   padding-left: 10px;
 }
+/****************************************
+ * BANNER DE LOGOS – VERSIÓN AJUSTADA
+ ****************************************/
+#logos-banner {
+  margin-top: 80px; /* evita solaparse con el header fijo */
+  background: white;
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+
+#logos-banner img {
+  max-height: 55px;   /* altura máxima */
+  max-width: 120px;   /* anchura máxima */
+  width: auto;        /* mantiene proporción */
+  height: auto;       /* mantiene proporción */
+  object-fit: contain;
+  opacity: 0.9;
+  transition: 0.2s;
+}
+
+#logos-banner img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Versión móvil */
+@media (max-width: 480px) {
+  #logos-banner img {
+    max-height: 40px;
+    max-width: 90px;
+  }
+}
+/****************************************
+ * BOTÓN INSTRUCCIONES CAPITÁN
+ ****************************************/
+#btn-instrucciones-container {
+  margin-bottom: 15px;
+}
+
+#btn-instrucciones {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+#btn-instrucciones:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/****************************************
+ * MODAL INSTRUCCIONES
+ ****************************************/
+#modal-instrucciones .modal-content {
+  max-width: 600px;
+}
+
+#modal-instrucciones h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+#modal-instrucciones p,
+#modal-instrucciones li {
+  color: #333;
+  line-height: 1.5;
+}
+/****************************************
+ * FIX VISIBILIDAD TEXTO EN MODALES
+ ****************************************/
+
+/* Texto dentro de cualquier modal */
+.modal-content,
+.modal-content p,
+.modal-content li,
+.modal-content h2,
+.modal-content h3,
+.modal-content strong {
+  color: #222 !important;   /* negro suave, muy legible */
+  opacity: 1 !important;    /* elimina transparencias heredadas */
+}
+
+/* Nombres de equipos en el modal de edición */
+#form-equipos {
+  color: #111 !important;
+  font-weight: 700;
+}
+
+/* Etiquetas y textos dentro del formulario */
+#modal input,
+#modal label,
+#modal .set-row {
+  color: #222 !important;
+}
+/****************************************
+ * FIX POSICIÓN DE LA X EN MODALES
+ ****************************************/
+.modal-content {
+  position: relative !important; /* La X se posiciona dentro del modal */
+}
+
+.modal-content .close {
+  position: absolute !important;
+  top: 10px;
+  right: 15px;
+  color: #333 !important;
+  opacity: 1 !important;
+  z-index: 10;
+}
