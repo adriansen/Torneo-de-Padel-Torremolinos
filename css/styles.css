@@ -575,3 +575,24 @@ table.tabla-ligaB tr:hover td {
   min-width: 600px !important;
   width: auto !important;
 }
+
+/* Ajuste dinámico del banner de logos */
+#logos-banner {
+  display: flex;
+  flex-wrap: wrap;          /* permite que los logos bajen a otra línea */
+  justify-content: center;  /* centra los logos */
+  align-items: center;
+  gap: 25px;                /* separación flexible */
+  padding: 12px 10px;       /* un poco de margen lateral */
+  width: 100%;              /* ocupa todo el ancho disponible */
+  box-sizing: border-box;   /* evita que el padding rompa el ancho */
+}
+
+/* Los logos se adaptan mejor al espacio */
+#logos-banner img {
+  max-height: 55px;
+  max-width: 120px;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+}
