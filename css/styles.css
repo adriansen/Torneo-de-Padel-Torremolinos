@@ -543,67 +543,25 @@ table.tabla-ligaB tr:hover td {
 }
 
 /****************************************
- * FIX: QUE LA TARJETA SE ADAPTE AL ANCHO DE LAS TABLAS
+ * SOLUCIÓN FINAL: TARJETA = ANCHO DE TABLA
  ****************************************/
 
-/* La tarjeta debe permitir que el contenido sea más ancho */
-.partido.card {
-  overflow-x: auto;        /* permite scroll horizontal si hace falta */
-  padding-bottom: 12px;    /* espacio para que no tape nada */
-}
-
-/* Contenedor interno para evitar que la tabla rompa el diseño */
-.partido.card > * {
-  min-width: max-content;  /* el contenido define el ancho mínimo */
-}
-
-/* Las tablas vuelven a su comportamiento original */
-.tabla-partidos-mini,
-.tabla-detalle {
-  min-width: 600px;        /* restauramos el ancho original */
-  width: auto;             /* que no se encojan */
-  table-layout: auto;      /* que no se aplasten */
-}
-
-/****************************************
- * FIX REAL: TABLAS ANCHAS SIN DEFORMARSE
- ****************************************/
-
-/* Elimina el width:100% que aplasta las tablas */
-.partido.card table {
-  width: auto !important;
-  min-width: 600px !important;
-}
-
-/* La tarjeta permite scroll horizontal */
-.partido.card {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* scroll suave en iPhone */
-}
-
-/* Evita que el contenido interno se rompa */
-.partido.card > * {
-  min-width: max-content;
-}
-
-/****************************************
- * FIX DEFINITIVO: TARJETA = ANCHO DE TABLA
- ****************************************/
-
-/* La tarjeta debe crecer tanto como la tabla */
+/* 1. La tarjeta debe crecer tanto como la tabla */
 .partido.card {
   width: max-content !important;
   max-width: none !important;
   overflow: visible !important;
+  display: block !important;
 }
 
-/* El contenedor general permite scroll horizontal si hace falta */
+/* 2. El contenedor general permite scroll horizontal si hace falta */
 #partidos-list {
-  overflow-x: auto;
+  overflow-x: auto !important;
   -webkit-overflow-scrolling: touch;
+  padding-bottom: 10px;
 }
 
-/* Las tablas mantienen su ancho natural */
+/* 3. Las tablas mantienen su ancho natural */
 .tabla-partidos-mini,
 .tabla-detalle {
   min-width: 600px !important;
