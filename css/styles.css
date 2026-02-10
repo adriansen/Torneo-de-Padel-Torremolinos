@@ -564,3 +564,24 @@ table.tabla-ligaB tr:hover td {
   width: auto;             /* que no se encojan */
   table-layout: auto;      /* que no se aplasten */
 }
+
+/****************************************
+ * FIX REAL: TABLAS ANCHAS SIN DEFORMARSE
+ ****************************************/
+
+/* Elimina el width:100% que aplasta las tablas */
+.partido.card table {
+  width: auto !important;
+  min-width: 600px !important;
+}
+
+/* La tarjeta permite scroll horizontal */
+.partido.card {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* scroll suave en iPhone */
+}
+
+/* Evita que el contenido interno se rompa */
+.partido.card > * {
+  min-width: max-content;
+}
