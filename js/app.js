@@ -145,16 +145,29 @@ function renderEnfrentamientos() {
               if (!p || !p.sets) return "";
 
               let s1 = 0, s2 = 0;
+              let juegos1 = 0, juegos2 = 0;
+
               const setsTexto = p.sets.map(s => {
                 if (!s) return "NJ";
+
+                juegos1 += s.j1;
+                juegos2 += s.j2;
+
                 if (s.j1 > s.j2) s1++;
                 else if (s.j2 > s.j1) s2++;
                 return `${s.j1}/${s.j2}`;
               }).join(" · ");
 
               let ganador = "-";
-              if (s1 > s2) ganador = e.e1;
-              else if (s2 > s1) ganador = e.e2;
+              if (s1 > s2) {
+                ganador = e.e1;
+              } else if (s2 > s1) {
+                ganador = e.e2;
+              } else {
+                // Empate a sets → decidir por juegos
+                if (juegos1 > juegos2) ganador = e.e1;
+                else if (juegos2 > juegos1) ganador = e.e2;
+              }
 
               return `
                 <tr>
@@ -164,6 +177,7 @@ function renderEnfrentamientos() {
                 </tr>
               `;
             }).join("")}
+
           </table>
         </div>
       `;
@@ -386,35 +400,35 @@ document.getElementById("form-resultados").onsubmit = e => {
 function renderTabla(liga, tabla) {
   const div = document.getElementById(`tabla-liga${liga}`);
   div.innerHTML = `
-    <h2>Liga ${liga}</h2>
-    <table>
-      <tr>
-        <th>Equipo</th><th>PJ</th><th>PG</th><th>PP</th><th>PTS</th>
-        <th>SG</th><th>SP</th><th>Dif S</th>
-        <th>JG</th><th>JP</th><th>Dif J</th>
-      </tr>
-      ${Object.entries(tabla)
-        .sort((a,b)=>
-          b[1].PTS - a[1].PTS ||
-          (b[1].SG - b[1].SP) - (a[1].SG - a[1].SP) ||
-          (b[1].JG - b[1].JP) - (a[1].JG - a[1].JP)
-        )
-        .map(([k,v])=>`
-          <tr>
-            <td>${k}</td>
-            <td>${v.PJ}</td>
-            <td>${v.PG}</td>
-            <td>${v.PP}</td>
-            <td>${v.PTS}</td>
-            <td>${v.SG}</td>
-            <td>${v.SP}</td>
-            <td>${v.SG - v.SP}</td>
-            <td>${v.JG}</td>
-            <td>${v.JP}</td>
-            <td>${v.JG - v.JP}</td>
-          </tr>`).join("")}
-    </table>
-  `;
+  <h2>Liga ${liga}</h2>
+  <table class="tabla-liga${liga}">
+    <tr>
+      <th>Equipo</th><th>PJ</th><th>PG</th><th>PP</th><th>PTS</th>
+      <th>SG</th><th>SP</th><th>Dif S</th>
+      <th>JG</th><th>JP</th><th>Dif J</th>
+    </tr>
+    ${Object.entries(tabla)
+      .sort((a,b)=>
+        b[1].PTS - a[1].PTS ||
+        (b[1].SG - b[1].SP) - (a[1].SG - a[1].SP) ||
+        (b[1].JG - b[1].JP) - (a[1].JG - a[1].JP)
+      )
+      .map(([k,v])=>`
+        <tr>
+          <td>${k}</td>
+          <td>${v.PJ}</td>
+          <td>${v.PG}</td>
+          <td>${v.PP}</td>
+          <td>${v.PTS}</td>
+          <td>${v.SG}</td>
+          <td>${v.SP}</td>
+          <td>${v.SG - v.SP}</td>
+          <td>${v.JG}</td>
+          <td>${v.JP}</td>
+          <td>${v.JG - v.JP}</td>
+        </tr>`).join("")}
+  </table>
+`;
 }
 
 /*********************************
@@ -447,31 +461,37 @@ function recalcularTablas() {
       if (!p || !p.sets) return;
 
       let s1 = 0, s2 = 0;
+      let juegos1 = 0, juegos2 = 0;
 
       p.sets.forEach(s => {
         if (!s) return;
 
-        juegosE1 += s.j1;
-        juegosE2 += s.j2;
+        juegos1 += s.j1;
+        juegos2 += s.j2;
 
         if (s.j1 > s.j2) s1++;
         else if (s.j2 > s.j1) s2++;
       });
 
+      // Acumular sets y juegos al total del enfrentamiento
       setsE1 += s1;
       setsE2 += s2;
 
+      juegosE1 += juegos1;
+      juegosE2 += juegos2;
+
+      // Decidir ganador de la pareja
       if (s1 > s2) {
         partidosE1++;
       } else if (s2 > s1) {
         partidosE2++;
       } else {
-        // Empate a sets → decidir por juegos
-        if (juegosE1 > juegosE2) partidosE1++;
-        else if (juegosE2 > juegosE1) partidosE2++;
+        // Empate a sets → decidir por juegos de ESTA pareja
+        if (juegos1 > juegos2) partidosE1++;
+        else if (juegos2 > juegos1) partidosE2++;
       }
-
     });
+
 
     e1.SG += setsE1;
     e1.SP += setsE2;
@@ -488,28 +508,18 @@ function recalcularTablas() {
 
     let ptsE1 = 0, ptsE2 = 0;
 
+    // Puntos = partidos ganados
+    ptsE1 = partidosE1;
+    ptsE2 = partidosE2;
+
+    // Victorias / derrotas del enfrentamiento
     if (partidosE1 > partidosE2) {
       e1.PG++;
       e2.PP++;
-
-      // Asignación de puntos ampliada
-      if (partidosE1 === 5) { ptsE1 = 5; ptsE2 = 0; }
-      else if (partidosE1 === 4) { ptsE1 = 4; ptsE2 = 1; }
-      else if (partidosE1 === 3) { ptsE1 = 3; ptsE2 = 2; }
-      else if (partidosE1 === 2) { ptsE1 = 2; ptsE2 = 0; }
-      else if (partidosE1 === 1) { ptsE1 = 1; ptsE2 = 0; }
-
     } else if (partidosE2 > partidosE1) {
       e2.PG++;
       e1.PP++;
-
-      if (partidosE2 === 5) { ptsE2 = 5; ptsE1 = 0; }
-      else if (partidosE2 === 4) { ptsE2 = 4; ptsE1 = 1; }
-      else if (partidosE2 === 3) { ptsE2 = 3; ptsE1 = 2; }
-      else if (partidosE2 === 2) { ptsE2 = 2; ptsE1 = 0; }
-      else if (partidosE2 === 1) { ptsE2 = 1; ptsE1 = 0; }
     }
-
 
     e1.PTS += ptsE1;
     e2.PTS += ptsE2;
