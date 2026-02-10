@@ -18,6 +18,14 @@
   </nav>
 </header>
 
+<div id="logos-banner">
+    <img src="img/logos/12.jpg" alt="Logo 1">
+    <img src="img/logos/ache.jpg" alt="Logo 2">
+    <img src="img/logos/CPTorr.png" alt="Logo 3">
+    <img src="img/logos/AYTO.png" alt="Logo 4">
+    <img src="img/logos/NOVA.jpeg" alt="Logo 5">
+</div>
+
 <!-- Barra de acceso capitanes -->
 <div id="admin-bar" style="margin-top:80px; text-align:center;">
   <button id="btn-capitan">Acceso capitanes</button>
@@ -126,6 +134,7 @@
 
 <section id="partidos">
   <h1>📅 Partidos</h1>
+  <div id="btn-instrucciones-container"></div>
   <div id="partidos-list"></div>
 </section>
 
@@ -146,6 +155,42 @@
       <div id="sets"></div>
       <button type="submit">Guardar resultado</button>
     </form>
+  </div>
+</div>
+
+<!-- Modal Instrucciones -->
+<div id="modal-instrucciones" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModalInstrucciones()">&times;</span>
+
+    <h2>Instrucciones para rellenar los resultados</h2>
+
+    <p>Los capitanes deben rellenar los resultados de los <strong>5 partidos</strong> al finalizar cada enfrentamiento.</p>
+
+    <p>En cada partido deben introducir los juegos de cada set tal y como han terminado.</p>
+
+    <ul>
+      <li>Si un set no se ha jugado, debe marcarse como <strong>No jugado</strong>.</li>
+      <li>Si un partido termina antes de completar los 3 sets, los sets restantes deben marcarse como <strong>No jugado</strong>.</li>
+    </ul>
+
+    <h3>🟧 Regla del punto de oro al finalizar el tiempo</h3>
+
+    <p><strong>Se debe jugar un punto de oro si al finalizar el tiempo ocurre cualquiera de estas situaciones:</strong></p>
+
+    <ol>
+      <li>Cada equipo ha ganado <strong>1 set</strong> y el número total de juegos es el mismo.</li>
+      <li>Un equipo ha ganado <strong>1 set</strong>, el segundo set está en juego y el número total de juegos es el mismo.</li>
+    </ol>
+
+    <p>El equipo que gane ese punto de oro debe recibir <strong>1 juego adicional</strong> en el tercer set (o en el set en curso) para que el sistema pueda determinar correctamente el ganador.</p>
+
+    <h3>Ejemplo</h3>
+    <p>
+      Si un partido termina <strong>6/2</strong>, <strong>2/6</strong> y en el tercer set iban <strong>2/2</strong> cuando se acaba el tiempo, se juega un punto de oro.<br>
+      Si lo gana el equipo 2, entonces el resultado que debe introducirse es <strong>2/3</strong> en el tercer set.
+    </p>
+
   </div>
 </div>
 
@@ -199,6 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Modo capitán activado");
         document.getElementById("btn-borrar-todo").style.display = "inline-block";
         renderEnfrentamientos();
+        renderBotonInstrucciones();
       });
     } else {
       alert("PIN incorrecto");
@@ -257,6 +303,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-<script src="js/app.js?v=7"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
