@@ -543,7 +543,7 @@ table.tabla-ligaB tr:hover td {
 }
 
 /****************************************
- * FIX FINAL: PERMITIR QUE LA TARJETA CREZCA
+ * SOLUCIÓN FINAL: TARJETA = ANCHO DE TABLA
  ****************************************/
 
 /* 1. El section no debe limitar el ancho */
@@ -552,12 +552,13 @@ table.tabla-ligaB tr:hover td {
   padding-right: 0 !important;
 }
 
-/* 2. El contenedor general maneja el scroll y el padding */
+/* 2. El contenedor general maneja el scroll horizontal */
 #partidos-list {
   overflow-x: auto !important;
   -webkit-overflow-scrolling: touch;
   padding-left: 20px;
   padding-right: 20px;
+  width: max-content; /* permite crecer tanto como la tarjeta */
 }
 
 /* 3. La tarjeta crece tanto como la tabla */
@@ -565,6 +566,7 @@ table.tabla-ligaB tr:hover td {
   width: max-content !important;
   max-width: none !important;
   overflow: visible !important;
+  display: block !important;
 }
 
 /* 4. Las tablas mantienen su ancho natural */
