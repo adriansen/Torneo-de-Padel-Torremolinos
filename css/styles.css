@@ -373,3 +373,51 @@ tr:last-child td {
 .toggle-btn:hover {
   background: var(--color-primary-dark);
 }
+/****************************************
+ * TABLAS POR LIGA – TOQUE DE COLOR SIMPLE
+ ****************************************/
+
+/* Encabezado Liga A */
+table.tabla-ligaA tr:first-child th {
+  background: rgba(0, 122, 204, 0.20);
+  color: #004a80;
+  border-bottom: 2px solid var(--ligaA);
+}
+
+/* Encabezado Liga B */
+table.tabla-ligaB tr:first-child th {
+  background: rgba(211, 84, 0, 0.20);
+  color: #7a3a00;
+  border-bottom: 2px solid var(--ligaB);
+}
+
+/* Borde lateral nombre equipo */
+table.tabla-ligaA tr td:first-child {
+  border-left: 5px solid var(--ligaA);
+}
+
+table.tabla-ligaB tr td:first-child {
+  border-left: 5px solid var(--ligaB);
+}
+
+/* Hover */
+table.tabla-ligaA tr:hover td {
+  background: rgba(0, 122, 204, 0.08);
+}
+
+table.tabla-ligaB tr:hover td {
+  background: rgba(211, 84, 0, 0.08);
+}
+
+/* Título */
+#tabla-ligaA h2 {
+  color: var(--ligaA);
+  border-left: 6px solid var(--ligaA);
+  padding-left: 10px;
+}
+
+#tabla-ligaB h2 {
+  color: var(--ligaB);
+  border-left: 6px solid var(--ligaB);
+  padding-left: 10px;
+}
