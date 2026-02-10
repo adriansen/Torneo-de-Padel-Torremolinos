@@ -585,3 +585,27 @@ table.tabla-ligaB tr:hover td {
 .partido.card > * {
   min-width: max-content;
 }
+
+/****************************************
+ * FIX DEFINITIVO: TARJETA = ANCHO DE TABLA
+ ****************************************/
+
+/* La tarjeta debe crecer tanto como la tabla */
+.partido.card {
+  width: max-content !important;
+  max-width: none !important;
+  overflow: visible !important;
+}
+
+/* El contenedor general permite scroll horizontal si hace falta */
+#partidos-list {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Las tablas mantienen su ancho natural */
+.tabla-partidos-mini,
+.tabla-detalle {
+  min-width: 600px !important;
+  width: auto !important;
+}
