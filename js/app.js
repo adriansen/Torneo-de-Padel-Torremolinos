@@ -36,7 +36,7 @@ const enfrentamientos = [
   { id: 16, hora: "Sábado 17:00 - 1",  e1: "GMadrid - A",           e2: "Dracs Valencia - A",      liga: "A" },
   { id: 17, hora: "Sábado 17:00 - 2",  e1: "Dracs Valencia - B",    e2: "Chicota Sevilla - B",     liga: "B" },
   { id: 18, hora: "Sábado 18:00 - 1",  e1: "Sitges/Cierzo Zaragoza", e2: "Chicota Sevilla - A",    liga: "A" },
-  { id: 19, hora: "Sábado 18:00 - 2",  e1: "C.P. Torremolinos - B",  e2: "Dracs Valencia - B",     liga: "B" },
+  { id: 19, hora: "Sábado 18:00 - 2",  e1: "C.P. Torremolinos - B",  e2: "GMadrid - B",     liga: "B" },
   { id: 20, hora: "Sábado 19:00 - 1",  e1: "C.P. Torremolinos - A", e2: "Dracs Valencia - A",      liga: "A" }
 ];
 
