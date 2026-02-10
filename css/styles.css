@@ -541,3 +541,40 @@ table.tabla-ligaB tr:hover td {
   opacity: 1 !important;
   z-index: 10;
 }
+
+/****************************************
+ * FIX: ANCHO DE TARJETAS Y TABLAS EN ENFRENTAMIENTOS
+ ****************************************/
+
+/* La tarjeta debe ocupar todo el ancho disponible */
+.partido.card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Las tablas deben adaptarse al ancho del contenedor */
+.tabla-partidos-mini,
+.tabla-detalle {
+  width: 100% !important;
+  min-width: unset !important; /* elimina el ancho mínimo de 600px */
+  table-layout: fixed; /* evita que se expandan más de la cuenta */
+}
+
+/* Las celdas se ajustan mejor y no rompen el diseño */
+.tabla-partidos-mini td,
+.tabla-detalle td {
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* En móvil, aseguramos que todo fluya sin scroll horizontal */
+@media (max-width: 480px) {
+  .partido.card {
+    padding: 12px;
+  }
+
+  .tabla-partidos-mini,
+  .tabla-detalle {
+    font-size: 0.85em;
+  }
+}
