@@ -543,38 +543,24 @@ table.tabla-ligaB tr:hover td {
 }
 
 /****************************************
- * FIX: ANCHO DE TARJETAS Y TABLAS EN ENFRENTAMIENTOS
+ * FIX: QUE LA TARJETA SE ADAPTE AL ANCHO DE LAS TABLAS
  ****************************************/
 
-/* La tarjeta debe ocupar todo el ancho disponible */
+/* La tarjeta debe permitir que el contenido sea más ancho */
 .partido.card {
-  width: 100%;
-  box-sizing: border-box;
+  overflow-x: auto;        /* permite scroll horizontal si hace falta */
+  padding-bottom: 12px;    /* espacio para que no tape nada */
 }
 
-/* Las tablas deben adaptarse al ancho del contenedor */
+/* Contenedor interno para evitar que la tabla rompa el diseño */
+.partido.card > * {
+  min-width: max-content;  /* el contenido define el ancho mínimo */
+}
+
+/* Las tablas vuelven a su comportamiento original */
 .tabla-partidos-mini,
 .tabla-detalle {
-  width: 100% !important;
-  min-width: unset !important; /* elimina el ancho mínimo de 600px */
-  table-layout: fixed; /* evita que se expandan más de la cuenta */
-}
-
-/* Las celdas se ajustan mejor y no rompen el diseño */
-.tabla-partidos-mini td,
-.tabla-detalle td {
-  word-wrap: break-word;
-  white-space: normal;
-}
-
-/* En móvil, aseguramos que todo fluya sin scroll horizontal */
-@media (max-width: 480px) {
-  .partido.card {
-    padding: 12px;
-  }
-
-  .tabla-partidos-mini,
-  .tabla-detalle {
-    font-size: 0.85em;
-  }
+  min-width: 600px;        /* restauramos el ancho original */
+  width: auto;             /* que no se encojan */
+  table-layout: auto;      /* que no se aplasten */
 }
