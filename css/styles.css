@@ -681,3 +681,80 @@ table.tabla-ligaB tr:hover td {
 .footer-icon-link:hover .footer-icon {
   fill: var(--color-primary); /* cambia a verde al pasar el ratón */
 }
+
+#ubicacion {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background: #ffffff;
+  color: #333;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ubicacion h2 {
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  font-size: 1.6em;
+  text-align: center;
+}
+
+.ubicacion-texto {
+  text-align: center;
+  font-size: 1em;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.map-container {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 480px) {
+  #ubicacion {
+    padding: 25px 15px;
+  }
+
+  #ubicacion h2 {
+    font-size: 1.4em;
+  }
+
+  .ubicacion-texto {
+    font-size: 0.95em;
+  }
+
+  .map-container iframe {
+    height: 250px;
+  }
+}
+
+/****************************************
+ * BOTÓN "CÓMO LLEGAR"
+ ****************************************/
+.btn-como-llegar-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-como-llegar {
+  background: var(--color-primary);
+  color: white;
+  padding: 12px 22px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em;
+  display: inline-block;
+  transition: 0.25s ease;
+  box-shadow: var(--shadow);
+}
+
+.btn-como-llegar:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-3px);
+}
