@@ -609,3 +609,75 @@ table.tabla-ligaB tr:hover td {
     max-width: 20vw;
   }
 }
+
+/****************************************
+ * FOOTER PROFESIONAL
+ ****************************************/
+#footer {
+  background: #0d2418; /* tono más oscuro que tu fondo */
+  color: #e8e8e8;
+  padding: 35px 20px;
+  margin-top: 60px;
+  border-top: 1px solid #1a3a2a;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.25);
+}
+
+#footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 25px;
+  max-width: 900px;
+  margin: auto;
+}
+
+#footer .footer-section h3 {
+  margin-bottom: 8px;
+  font-size: 1.1em;
+  color: var(--color-primary);
+}
+
+#footer a {
+  color: #c8f7dc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#footer a:hover {
+  color: var(--color-primary);
+}
+
+#footer .footer-bottom {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.85em;
+  opacity: 0.8;
+}
+
+/* Versión móvil */
+@media (max-width: 480px) {
+  #footer .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Iconos del footer */
+.footer-icon {
+  width: 18px;
+  height: 18px;
+  fill: #c8f7dc; /* color suave que combina con tu tema */
+  margin-right: 8px;
+  vertical-align: middle;
+  transition: 0.2s;
+}
+
+.footer-icon-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-icon-link:hover .footer-icon {
+  fill: var(--color-primary); /* cambia a verde al pasar el ratón */
+}
