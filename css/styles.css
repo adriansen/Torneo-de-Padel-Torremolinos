@@ -576,23 +576,36 @@ table.tabla-ligaB tr:hover td {
   width: auto !important;
 }
 
-/* Ajuste dinámico del banner de logos */
+/****************************************
+ * BANNER DE LOGOS – UNA SOLA FILA AJUSTADA
+ ****************************************/
 #logos-banner {
+  margin-top: 80px;
+  background: white;
+  padding: 12px 10px;
   display: flex;
-  flex-wrap: wrap;          /* permite que los logos bajen a otra línea */
-  justify-content: center;  /* centra los logos */
+  flex-direction: row;
+  flex-wrap: nowrap;          /* una sola fila SIEMPRE */
+  justify-content: center;    /* centrado dinámico */
   align-items: center;
-  gap: 25px;                /* separación flexible */
-  padding: 12px 10px;       /* un poco de margen lateral */
-  width: 100%;              /* ocupa todo el ancho disponible */
-  box-sizing: border-box;   /* evita que el padding rompa el ancho */
+  gap: 20px;
+  width: 100%;
+  overflow: hidden;           /* evita desbordes */
+  box-sizing: border-box;
 }
 
-/* Los logos se adaptan mejor al espacio */
+/* Los logos se autoescalan para encajar en una sola fila */
 #logos-banner img {
-  max-height: 55px;
-  max-width: 120px;
-  height: auto;
+  height: 45px;
   width: auto;
+  flex-shrink: 1;             /* permite que se reduzcan si no caben */
+  max-width: 18vw;            /* cada logo ocupa como máximo el 18% del ancho */
   object-fit: contain;
+}
+
+@media (max-width: 480px) {
+  #logos-banner img {
+    height: 35px;
+    max-width: 20vw;
+  }
 }
