@@ -3,7 +3,7 @@
  *********************************/
 const equiposA = [
   "C.P. Torremolinos - A",
-  "Sitges/Cierzo Zaragoza",
+  "Sitges",
   "Dracs Valencia - A",
   "GMadrid - A",
   "Chicota Sevilla - A"
@@ -19,23 +19,23 @@ const equiposB = [
 
 const enfrentamientos = [
   { id: 1,  hora: "Viernes 17:00",     e1: "C.P. Torremolinos - B", e2: "Diversport Torremolinos", liga: "B" },
-  { id: 2,  hora: "Viernes 18:00",     e1: "Dracs Valencia - A",    e2: "Sitges/Cierzo Zaragoza", liga: "A" },
+  { id: 2,  hora: "Viernes 18:00",     e1: "Dracs Valencia - A",    e2: "Sitges", liga: "A" },
   { id: 3,  hora: "Viernes 19:00",     e1: "C.P. Torremolinos - A", e2: "GMadrid - A",            liga: "A" },
   { id: 4,  hora: "Viernes 20:00",     e1: "GMadrid - B",           e2: "Chicota Sevilla - B",    liga: "B" },
   { id: 5,  hora: "Sábado 10:00",      e1: "Dracs Valencia - B",    e2: "Diversport Torremolinos", liga: "B" },
   { id: 6,  hora: "Sábado 11:00",      e1: "Dracs Valencia - A",    e2: "Chicota Sevilla - A",     liga: "A" },
   { id: 7,  hora: "Sábado 12:00",      e1: "C.P. Torremolinos - B", e2: "Chicota Sevilla - B",     liga: "B" },
-  { id: 8,  hora: "Sábado 13:00 - 1",  e1: "C.P. Torremolinos - A", e2: "Sitges/Cierzo Zaragoza",  liga: "A" },
+  { id: 8,  hora: "Sábado 13:00 - 1",  e1: "C.P. Torremolinos - A", e2: "Sitges",  liga: "A" },
   { id: 9,  hora: "Sábado 13:00 - 2",  e1: "GMadrid - B",           e2: "Dracs Valencia - B",      liga: "B" },
   { id: 10, hora: "Sábado 14:00 - 1",  e1: "GMadrid - A",           e2: "Chicota Sevilla - A",     liga: "A" },
   { id: 11, hora: "Sábado 14:00 - 2",  e1: "Chicota Sevilla - B",   e2: "Diversport Torremolinos", liga: "B" },
-  { id: 12, hora: "Sábado 15:00 - 1",  e1: "GMadrid - A",           e2: "Sitges/Cierzo Zaragoza",  liga: "A" },
+  { id: 12, hora: "Sábado 15:00 - 1",  e1: "GMadrid - A",           e2: "Sitges",  liga: "A" },
   { id: 13, hora: "Sábado 15:00 - 2",  e1: "C.P. Torremolinos - B", e2: "Dracs Valencia - B",      liga: "B" },
   { id: 14, hora: "Sábado 16:00 - 1",  e1: "C.P. Torremolinos - A", e2: "Chicota Sevilla - A",     liga: "A" },
   { id: 15, hora: "Sábado 16:00 - 2",  e1: "GMadrid - B",           e2: "Diversport Torremolinos", liga: "B" },
   { id: 16, hora: "Sábado 17:00 - 1",  e1: "GMadrid - A",           e2: "Dracs Valencia - A",      liga: "A" },
   { id: 17, hora: "Sábado 17:00 - 2",  e1: "Dracs Valencia - B",    e2: "Chicota Sevilla - B",     liga: "B" },
-  { id: 18, hora: "Sábado 18:00 - 1",  e1: "Sitges/Cierzo Zaragoza", e2: "Chicota Sevilla - A",    liga: "A" },
+  { id: 18, hora: "Sábado 18:00 - 1",  e1: "Sitges", e2: "Chicota Sevilla - A",    liga: "A" },
   { id: 19, hora: "Sábado 18:00 - 2",  e1: "C.P. Torremolinos - B",  e2: "GMadrid - B",     liga: "B" },
   { id: 20, hora: "Sábado 19:00 - 1",  e1: "C.P. Torremolinos - A", e2: "Dracs Valencia - A",      liga: "A" }
 ];
